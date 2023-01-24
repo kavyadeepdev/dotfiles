@@ -1,0 +1,6 @@
+picom &
+nitrogen --restore &
+lxsession &
+tint2 &
+nm-applet &
+
