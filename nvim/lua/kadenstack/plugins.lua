@@ -78,6 +78,9 @@ return packer.startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("jayp0521/mason-null-ls.nvim")
 
+	-- Dashboard
+	-- use("nvimdev/dashboard-nvim")
+
 	-- Treesitter
 	use({
 		"nvim-treesitter/nvim-treesitter",
@@ -87,12 +90,18 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- ToggleTerm
+	use("akinsho/toggleterm.nvim")
+
 	-- Autoclose brackets
 	use("windwp/nvim-autopairs") -- autoclose parens, brackets, quotes, etc...
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
 	-- git integration
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
+
+	-- Interface key suggestions
+	-- use("folke/which-key.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()

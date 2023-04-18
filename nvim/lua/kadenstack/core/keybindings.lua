@@ -58,6 +58,8 @@ keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 -- Toggle file explorer
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+-- ToggleTerm
+keymap("n", "<C-t>", ":ToggleTerm<CR>", opts)
 
 -- Visual --
 -- Stay in indent mode
