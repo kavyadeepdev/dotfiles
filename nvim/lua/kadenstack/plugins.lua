@@ -101,7 +101,7 @@ return packer.startup(function(use)
 	use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 
 	-- Interface key suggestions
-	-- use("folke/which-key.nvim")
+	use("folke/which-key.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()
