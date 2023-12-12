@@ -28,12 +28,19 @@ keymap("n", "<leader>sh", "<C-w>s", opts) -- Split horizontally
 keymap("n", "<leader>sr", "<C-w>=", opts) -- Reset window width and height
 keymap("n", "<leader>sx", ":close<CR>", opts) -- Close window
 -- Navigate windows
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
-keymap("n", "<leader>sm", ":MaximizerToggle<CR>", opts) -- Maximize window (plugin)
--- Resize windows
+keymap("n", "<C-h>", "<C-w>h", opts)                -- Navigate left
+keymap("n", "<C-j>", "<C-w>j", opts)                -- Navigate down
+keymap("n", "<C-k>", "<C-w>k", opts)                -- Navigate up
+keymap("n", "<C-l>", "<C-w>l", opts)                -- Navidate right
+keymap("t", "<C-h>", [[<Cmd>wincmd h<CR>]], opts)   -- Navigate left
+keymap("t", "<C-j>", [[<Cmd>wincmd j<CR>]], opts)   -- Navigate down
+keymap("t", "<C-k>", [[<Cmd>wincmd k<CR>]], opts)   -- Navigate up
+keymap("t", "<C-l>", [[<Cmd>wincmd l<CR>]], opts)   -- Navigate right
+keymap("n", "<C-h>", ":TmuxNavigateLeft<CR>", opts) -- Navigate left
+keymap("n", "<C-j>", ":TmuxNavigateDown<CR>", opts) -- Navigate down
+keymap("n", "<C-k>", ":TmuxNavigateUp<CR>", opts)   -- Navigate up
+keymap("n", "<C-l>", ":TmuxNavigateRight<CR>", opts)-- Navidate rights
+-- Resize window
 keymap("n", "<C-S-k>", ":resize -2<CR>", opts)
 keymap("n", "<C-S-j>", ":resize +2<CR>", opts)
 keymap("n", "<C-S-h>", ":vertical resize -2<CR>", opts)
@@ -42,16 +49,16 @@ keymap("n", "<C-S-l>", ":vertical resize +2<CR>", opts)
 keymap("n", "<leader>tn", ":tabnew<CR>", opts) -- New tab
 keymap("n", "<leader>tx", ":tabclose<CR>", opts) -- Close tab
 -- Navigate tabs
-keymap("n", "<S-l>", ":tabn<CR>", opts)
-keymap("n", "<S-h>", ":tabN<CR>", opts)
+-- keymap("n", "<S-j>", ":tabn<CR>", opts)
+-- keymap("n", "<S-k>", ":tabN<CR>", opts)
 -- Open buffer
 keymap("n", "<leader>bo", ":new<CR>", opts) -- Open buffer
 keymap("n", "<leader>bx", ":bd<CR>", opts) -- Close buffer (don't force)
 keymap("n", "<leader>bf", ":bd!<CR>", opts) -- Close buffer (don't force)
 keymap("n", "<leader>br", ":bw<CR>", opts) -- Close buffer and remove from buffer list
 -- Navigate buffers
-keymap("n", "<S-j>", ":bnext<CR>", opts)
-keymap("n", "<S-k>", ":bprevious<CR>", opts)
+keymap("n", "<S-l>", ":bnext<CR>", opts)
+keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<S-x>", ":Bdelete!<CR>", opts)
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
@@ -84,10 +91,3 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
--- Telescope
-
-keymap("n", "<leader>ff", "<cmd>Telescope find_files<cr>", opts)
-keymap("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", opts)
-keymap("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", opts)
-keymap("n", "<leader>fb", "<cmd>Telescope buffers<cr>", opts)
-keymap("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", opts)
