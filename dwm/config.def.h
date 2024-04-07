@@ -15,7 +15,7 @@ static const int horizpadbar        = 10;        /* horizontal padding for statu
 static const int vertpadbar         = 6;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "Fira Code Nerd Font" };
 static const char dmenufont[]       = "Fira Code Nerd Font";
-#include "/home/kadenstack/.config/dwm/themes/ayu-dark.h"
+#include "/home/kavyadeep/.config/dwm/themes/ayu-dark.h"
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -71,7 +71,7 @@ static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "togg
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-p", "Run:","-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 
 #include "movestack.c"
 #include "shiftview.c"
