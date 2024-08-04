@@ -45,29 +45,193 @@ local config = function()
 		},
 	})
 
-	-- html
-	lspconfig.html.setup({
+	-- CMake & Makefile
+	lspconfig.cmake.setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
+		cmd = {
+			"cmake-language-server",
+		},
+		filetypes = {
+			"cmake",
+		},
+		init_options = {
+			buildDirectory = "build",
+		},
+		root_dir = lspconfig.util.root_pattern("CMakePresets.json", "CTestConfig.cmake", ".git", "build", "cmake"),
+		single_file_support = true,
+	})
+
+	-- rust
+	lspconfig.rust_analyzer.setup({
+		capabilities = {
+			experimental = {
+				serverStatusNotification = true,
+			},
+		},
+		on_attach = on_attach,
+		settings = {
+			["rust-analyzer"] = {
+				diagnostics = {
+					enable = false,
+				},
+			},
+		},
+		cmd = { "rust-analyzer" },
+		filetypes = { "rust" },
+		root_dir = lspconfig.util.root_pattern("Cargo.toml", "rust-project.json"),
+		single_file_support = true,
+	})
+
+	-- html
+	local html_capabilities = vim.lsp.protocol.make_client_capabilities()
+	html_capabilities.textDocument.completion.completionItem.snippetSupport = true
+	lspconfig.html.setup({
+		capabilities = html_capabilities,
+		on_attach = on_attach,
+		cmd = { "vscode-html-language-server", "--stdio" },
+		filetypes = { "html", "templ" },
+		init_options = {
+			configurationSection = { "html", "css", "javascript" },
+			embeddedLanguages = {
+				css = true,
+				javascript = true,
+			},
+			provideFormatter = true,
+		},
+		settings = {},
+		single_file_support = true,
 	})
 
 	-- css
 	lspconfig.cssls.setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
+		cmd = { "vscode-css-language-server", "--stdio" },
+		filetypes = { "css", "scss", "less" },
+		init_options = {
+			provideFormatter = true,
+		},
+		-- root_dir = lspconfig.root_pattern("package.json", ".git"),
+		settings = {
+			css = {
+				validate = true,
+			},
+			less = {
+				validate = true,
+			},
+			scss = {
+				validate = true,
+			},
+		},
+		single_file_support = true,
 	})
 
 	-- tailwindcss
 	lspconfig.tailwindcss.setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
+		cmd = { "tailwindcss-language-server", "--stdio" },
+		filetypes = {
+			"aspnetcorerazor",
+			"astro",
+			"astro-markdown",
+			"blade",
+			"clojure",
+			"django-html",
+			"htmldjango",
+			"edge",
+			"eelixir",
+			"elixir",
+			"ejs",
+			"erb",
+			"eruby",
+			"gohtml",
+			"gohtmltmpl",
+			"haml",
+			"handlebars",
+			"hbs",
+			"html",
+			"html-eex",
+			"heex",
+			"jade",
+			"leaf",
+			"liquid",
+			"markdown",
+			"mdx",
+			"mustache",
+			"njk",
+			"nunjucks",
+			"php",
+			"razor",
+			"slim",
+			"twig",
+			"css",
+			"less",
+			"postcss",
+			"sass",
+			"scss",
+			"stylus",
+			"sugarss",
+			"javascript",
+			"javascriptreact",
+			"reason",
+			"rescript",
+			"typescript",
+			"typescriptreact",
+			"vue",
+			"svelte",
+			"templ",
+		},
+		init_options = {
+			userLanguages = {
+				eelixir = "html-eex",
+				eruby = "erb",
+				templ = "html",
+			},
+		},
+		-- root_dir = lspconfig.root_pattern(
+		-- 	"tailwind.config.js",
+		-- 	"tailwind.config.cjs",
+		-- 	"tailwind.config.mjs",
+		-- 	"tailwind.config.ts",
+		-- 	"postcss.config.js",
+		-- 	"postcss.config.cjs",
+		-- 	"postcss.config.mjs",
+		-- 	"postcss.config.ts",
+		-- 	"package.json",
+		-- 	"node_modules",
+		-- 	".git"
+		-- ),
+		settings = {
+			tailwindCSS = {
+				classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
+				lint = {
+					cssConflict = "warning",
+					invalidApply = "error",
+					invalidConfigPath = "error",
+					invalidScreen = "error",
+					invalidTailwindDirective = "error",
+					invalidVariant = "error",
+					recommendedVariantOrder = "warning",
+				},
+				validate = true,
+			},
+		},
+		single_file_support = true,
 	})
 
 	-- json
 	lspconfig.jsonls.setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
+		cmd = { "vscode-json-language-server", "--stdio" },
 		filetypes = { "json", "jsonc" },
+		init_options = {
+			provideFormatter = true,
+		},
+		-- root_dir = lspconfig.util.find_git_ancestor,
+		single_file_support = true,
 	})
 
 	-- python
@@ -91,17 +255,36 @@ local config = function()
 	lspconfig.tsserver.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
+		cmd = { "typescript-language-server", "--stdio" },
 		filetypes = {
 			"javascript",
+			"javascriptreact",
+			"javascript.jsx",
 			"typescript",
+			"typescriptreact",
+			"typescript.tsx",
+		},
+		init_options = {
+			hostInfo = "neovim",
 		},
 		root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
+		single_file_support = true,
 	})
 
 	-- bash
 	lspconfig.bashls.setup({
 		capabilities = capabilities,
 		on_attach = on_attach,
+		cmd = {
+			"bash-language-server",
+			"start",
+		},
+		root_dir = lspconfig.util.find_git_ancestor,
+		settings = {
+			bashIde = {
+				globPattern = "*@(.sh|.inc|.bash|.command)",
+			},
+		},
 		filetypes = { "sh" },
 	})
 
@@ -110,15 +293,30 @@ local config = function()
 		capabilities = capabilities,
 		on_attach = on_attach,
 		filetypes = {
-			"html",
-			"javascriptreact",
-			"typescriptreact",
+			"astro",
 			"css",
+			"eruby",
+			"html",
+			"htmldjango",
+			"javascriptreact",
+			"less",
+			"pug",
 			"sass",
 			"scss",
-			"less",
 			"svelte",
+			"typescriptreact",
 			"vue",
+		},
+		single_file_support = true,
+	})
+
+	-- assembly
+	lspconfig.asm_lsp.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+		filetypes = {
+			"asm",
+			"vmasm",
 		},
 	})
 
@@ -178,6 +376,7 @@ local config = function()
 		},
 		settings = {
 			languages = {
+				html = { nil, prettierd },
 				lua = { luacheck, stylua },
 				cpp = { clang_tidy, clang_format },
 				c = { clang_tidy, clang_format },

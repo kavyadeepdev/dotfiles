@@ -1,5 +1,4 @@
 local opt = vim.opt
-
 -- Encoding
 opt.encoding = "utf-8"
 opt.fileencoding = "utf-8"
@@ -11,6 +10,7 @@ opt.writebackup = false
 
 -- Number Line
 opt.number = true
+opt.signcolumn = "yes"
 
 -- Text Display
 opt.tabstop = 4 -- Sets tab width

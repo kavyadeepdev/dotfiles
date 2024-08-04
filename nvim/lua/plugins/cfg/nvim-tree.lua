@@ -14,11 +14,15 @@ return {
 		renderer = {
 			group_empty = true,
 		},
+		view = {
+			side = "left",
+		},
 		filters = {
 			dotfiles = false,
 		},
 		actions = {
 			open_file = {
+				quit_on_open = true,
 				window_picker = {
 					enable = false,
 				},
