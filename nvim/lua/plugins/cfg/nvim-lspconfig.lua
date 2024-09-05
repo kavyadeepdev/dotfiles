@@ -310,6 +310,18 @@ local config = function()
 		single_file_support = true,
 	})
 
+	-- astro
+	lspconfig.astro.setup({
+		capabilities = capabilities,
+		on_attach = on_attach,
+		cmd = { "astro-ls", "--stdio" },
+		filetypes = { "astro" },
+		init_options = {
+			typescript = {},
+		},
+		root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
+	})
+
 	-- assembly
 	lspconfig.asm_lsp.setup({
 		capabilities = capabilities,
@@ -361,6 +373,7 @@ local config = function()
 			"javascriptreact",
 			"typescript",
 			"typescriptreact",
+			"astro",
 			"svelte",
 			"vue",
 			"markdown",
@@ -388,6 +401,7 @@ local config = function()
 				javascript = { eslint_d, prettierd },
 				javascriptreact = { eslint_d, prettierd },
 				typescriptreact = { eslint_d, prettierd },
+				astro = { eslint_d, prettierd },
 				svelte = { eslint_d, prettierd },
 				vue = { eslint_d, prettierd },
 				markdown = { markdownlint, prettierd },

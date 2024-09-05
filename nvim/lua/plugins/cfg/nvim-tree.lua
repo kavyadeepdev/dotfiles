@@ -15,7 +15,7 @@ return {
 			group_empty = true,
 		},
 		view = {
-			side = "left",
+			side = "right",
 		},
 		filters = {
 			dotfiles = false,
