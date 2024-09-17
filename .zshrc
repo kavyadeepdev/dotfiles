@@ -112,7 +112,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias vim="nvim"
 alias sxiv="nsxiv"
-alias lf="lfpreview"
+alias lf="lfrun"
 alias ls="lsd"
 alias la="lsd -a"
 alias btw="neofetch"

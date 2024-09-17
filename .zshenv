@@ -1,6 +1,13 @@
 # PATH variable
 export PATH="$PATH:$HOME/.cargo/bin"
 export PATH="$PATH:$HOME/.node_modules"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:/var/lib/flatpak/exports/bin/"
+
+# NVM
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # XDG paths
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
@@ -8,13 +15,11 @@ export XDG_CACHE_HOME=${XDG_CACHE_HOME:="$HOME/.cache"}
 export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:="$HOME/.config"}
 
 # Paths for applications
-
-# Custom variables
 export EDITOR="nvim"
 export READER="zathura"
 export VISUAL="nvim"
 export TERMINAL="alacritty"
-export BROWSER="firefox"
+export BROWSER="librewolf"
 export VIDEO="mpv"
 export IMAGE="nsxiv"
 export OPENER="xdg-open"
@@ -184,3 +189,8 @@ ex=:\
 *.pdf=:\
 *.nix=:\
 "
+
+# Spicetify
+export PATH=$PATH:/home/kavyadeep/.spicetify
+
+. "$HOME/.cargo/env"
