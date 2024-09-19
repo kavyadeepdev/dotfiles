@@ -113,9 +113,14 @@ source $ZSH/oh-my-zsh.sh
 alias vim="nvim"
 alias sxiv="nsxiv"
 alias lf="lfrun"
+alias cat="bat"
 alias ls="lsd"
-alias la="lsd -a"
+alias l='lsd -l'
+alias la='lsd -a'
+alias lla='lsd -la'
+alias lt='lsd --tree'
 alias btw="neofetch"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+eval "$(zoxide init --cmd cd zsh)"

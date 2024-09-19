@@ -1,0 +1,22 @@
+# File Manager
+super + e
+	pcmanfm &
+
+# Brightness Control
+XF86MonBrightnessUp
+	brillo -A 10
+
+XF86MonBrightnessDown
+	brillo -U 10
+
+# Lockscreen
+super + Escape
+	betterlockscreen -l
+
+# Screenshot
+Print
+	flameshot full
+
+shift + Print
+	flameshot gui
+
