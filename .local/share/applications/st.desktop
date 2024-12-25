@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=st
+Exec=st
+Type=Application
+Categories=Terminal;
+MimeType=x-scheme-handler/st;

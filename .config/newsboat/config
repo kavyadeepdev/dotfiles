@@ -22,3 +22,17 @@ bind-key l open
 bind-key H prev-feed
 bind-key L next-feed
 bind-key c toggle-show-read-feeds
+
+# colorscheme
+color background        default default
+color listnormal        default default
+color listnormal_unread default default bold
+color listfocus         black   blue
+color listfocus_unread  black   blue    bold
+color info              default black
+color article           default default
+
+# highlights
+highlight article "^(Title):.*$" blue default
+highlight article "https?://[^ ]+" red default
+highlight article "\\[image\\ [0-9]+\\]" green default

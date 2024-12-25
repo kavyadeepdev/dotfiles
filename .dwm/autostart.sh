@@ -5,4 +5,5 @@ nitrogen --restore &
 slstatus &
 nm-applet &
 blueman-applet &
+flameshot &
 sxhkd &
