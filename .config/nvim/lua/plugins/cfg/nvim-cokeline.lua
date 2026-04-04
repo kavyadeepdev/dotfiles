@@ -6,5 +6,5 @@ return {
 		"kyazdani42/nvim-web-devicons", -- If you want devicons
 		"stevearc/resession.nvim", -- Optional, for persistent history
 	},
-	config = {},
+	opts = {},
 }

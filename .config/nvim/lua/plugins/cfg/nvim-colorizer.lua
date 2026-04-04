@@ -1,5 +1,5 @@
 return {
-	"norcalli/nvim-colorizer.lua",
+	"NvChad/nvim-colorizer.lua",
 	lazy = false,
-	config = {},
+	opts = {},
 }

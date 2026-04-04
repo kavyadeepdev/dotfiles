@@ -2,7 +2,7 @@ return {
 	"nvim-lualine/lualine.nvim",
 	lazy = false,
 	opt = true,
-	config = {
+	opts = {
 		options = {
 			theme = "ayu",
 			globalstatus = true,

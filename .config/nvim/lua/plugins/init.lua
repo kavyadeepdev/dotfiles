@@ -33,8 +33,9 @@ local opts = {
 			"zipPlugin",
 		},
 	},
-	change_detection = {
-		notify = true,
+	rocks = {
+		enabled = false,
+		hererocks = false,
 	},
 }
 

@@ -1,30 +1,39 @@
 return {
 	"nvim-tree/nvim-tree.lua",
 	lazy = false,
-	config = {
-		sort_by = "case_sensitive",
-		-- view = {
-		-- 	adaptive_size = true,
-		-- 	mappings = {
-		-- 		list = {
-		-- 			{ key = "u", action = "dir_up" },
-		-- 		},
-		-- 	},
-		-- },
-		renderer = {
-			group_empty = true,
+	opts = {
+		filters = {
+			dotfiles = false,
+			custom = { "^\\.git$" },
+		},
+		sync_root_with_cwd = true,
+		respect_buf_cwd = true,
+		update_focused_file = {
+			enable = true,
+			update_root = true,
 		},
 		view = {
 			side = "right",
+			width = 45,
+			adaptive_size = true,
 		},
-		filters = {
-			dotfiles = false,
+		git = {
+			enable = true,
+			ignore = false,
 		},
-		actions = {
-			open_file = {
-				quit_on_open = true,
-				window_picker = {
-					enable = false,
+		renderer = {
+			root_folder_label = false,
+			icons = {
+				glyphs = {
+					git = {
+						unstaged = "✗",
+						staged = "✓",
+						unmerged = "",
+						renamed = "➜",
+						untracked = "★",
+						deleted = "",
+						ignored = "◌",
+					},
 				},
 			},
 		},
