@@ -1,101 +1,54 @@
 * {
     border: none;
-    font-size: 14px;
-    font-family: "JetBrainsMono Nerd Font,JetBrainsMono NF" ;
-    min-height: 25px;
+    border-radius: 0;
+    font-family: "Hack Nerd Font";
+    font-size: 13px;
+    min-height: 0;
 }
 
 window#waybar {
-  background: transparent;
-  margin: 5px;
- }
-
-#custom-logo {
-  padding: 0 10px;
+    background-color: #0f1419; /* col_gray1 */
+    color: #bfbdb6; /* col_gray3 */
 }
 
-.modules-right {
-  padding-left: 5px;
-  border-radius: 15px 0 0 15px;
-  margin-top: 2px;
-  background: #000000;
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #bfbdb6; /* col_gray3 */
 }
 
-.modules-center {
-  padding: 0 15px;
-  margin-top: 2px;
-  border-radius: 15px 15px 15px 15px;
-  background: #000000;
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.2);
 }
 
-.modules-left {
-  border-radius: 0 15px 15px 0;
-  margin-top: 2px;
-  background: #000000;
+#workspaces button.focused {
+    background-color: #59c2ff; /* col_cyan */
+    color: #0f1419; /* col_gray1 */
 }
 
+#workspaces button.urgent {
+    background-color: #ff3333;
+}
+
+#mode {
+    background-color: #59c2ff;
+    color: #0f1419;
+}
+
+#clock,
 #battery,
-#custom-clipboard,
-#custom-colorpicker,
-#custom-powerDraw,
-#bluetooth,
-#pulseaudio,
-#network,
-#disk,
-#memory,
-#backlight,
 #cpu,
+#memory,
 #temperature,
-#custom-weather,
-#idle_inhibitor,
-#jack,
+#network,
+#pulseaudio,
 #tray,
-#window,
-#workspaces,
-#clock {
-  padding: 0 5px;
-}
-#pulseaudio {
-  padding-top: 3px;
+#mode,
+#idle_inhibitor {
+    padding: 0 10px;
+    color: #bfbdb6;
 }
 
-#temperature.critical,
-#pulseaudio.muted {
-  color: #FF0000;
-  padding-top: 0;
-}
-
-
-
-
-#clock{
-  color: #5fd1fa;
-}
-
-#battery.charging {
-    color: #ffffff;
-    background-color: #26A65B;
-}
-
-#battery.warning:not(.charging) {
-    background-color: #ffbe61;
-    color: black;
-}
-
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
+#window {
+    font-weight: bold;
 }

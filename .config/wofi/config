@@ -1,0 +1,9 @@
+prompt=Run:
+allow_images=true
+allow_markup=true
+term=alacritty
+width=30%
+lines=8
+# This centers Wofi on your screen. 
+# If you prefer it at the top like dmenu, change this to "location=top" and add "yoffset=30" to push it under Waybar.
+location=center

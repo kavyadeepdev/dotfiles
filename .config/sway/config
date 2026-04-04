@@ -1,0 +1,274 @@
+# # ==========================================
+# # Sway config mapped from dwm config.h
+# # ==========================================
+#
+# # --- Variables ---
+# set $mod Mod4
+#
+# # Set your terminal
+# set $term alacritty
+#
+# # Set your menu (using wmenu-run with mapped ayu-dark colors)
+# set $menu wmenu-run
+#
+# # --- Appearance & Gaps ---
+# default_border pixel 2
+# gaps inner 8
+# smart_gaps off
+#
+# # --- Workspace Names (Tags) ---
+# set $ws1 "1"
+# set $ws2 "2"
+# set $ws3 "3"
+# set $ws4 "4"
+# set $ws5 "5"
+# set $ws6 "6"
+# set $ws7 "7"
+# set $ws8 "8"
+# set $ws9 "9"
+#
+# # --- Window Rules ---
+# # Sway uses app_id for Wayland native apps and class for XWayland apps
+# assign [class="Firefox"] $ws1
+# for_window [class="Gimp"] floating enable
+#
+# # --- Keybindings ---
+#
+# # Core
+# bindsym $mod+Return       exec $term
+# bindsym $mod+Shift+Return exec $menu
+# bindsym $mod+q            kill
+# bindsym $mod+Shift+r      reload
+# bindsym $mod+Shift+q      exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+#
+# # Focus (dwm: focusstack / Sway: directional focus)
+# bindsym $mod+j focus down
+# bindsym $mod+k focus up
+# bindsym $mod+h focus left
+# bindsym $mod+l focus right
+#
+# # Move (dwm: movestack / Sway: directional move)
+# bindsym $mod+Shift+j move down
+# bindsym $mod+Shift+k move up
+# bindsym $mod+Shift+h move left
+# bindsym $mod+Shift+l move right
+#
+# # Resize (dwm: setmfact / Sway: resize mode or direct commands)
+# bindsym $mod+Control+h resize shrink width 5 px or 5 ppt
+# bindsym $mod+Control+l resize grow width 5 px or 5 ppt
+#
+# # Layouts (Approximations of dwm layouts)
+# bindsym $mod+t layout toggle split   # default tile behavior
+# bindsym $mod+m layout tabbed         # monocle approximation
+# bindsym $mod+f fullscreen toggle     # Sway handles floating differently; mapped to fullscreen instead
+# bindsym $mod+Shift+space floating toggle
+#
+# # Gaps
+# bindsym $mod+minus       gaps inner current minus 2
+# bindsym $mod+equal       gaps inner current plus 2
+# bindsym $mod+Shift+equal gaps inner current set 8
+#
+# # Monitors (dwm: focusmon/tagmon)
+# bindsym $mod+comma       focus output left
+# bindsym $mod+period      focus output right
+# bindsym $mod+Shift+comma move workspace to output left
+# bindsym $mod+Shift+period move workspace to output right
+#
+# # Shiftview (dwm: shiftview script / Sway: native workspace cycle)
+# bindsym $mod+Control+Left  workspace prev
+# bindsym $mod+Control+Right workspace next
+#
+# # Alternate views
+# bindsym Mod1+Tab workspace back_and_forth # alt-tab behavior (zoom/view 0 equivalent)
+#
+# # --- Workspaces (Tags) ---
+# bindsym $mod+1 workspace number $ws1
+# bindsym $mod+2 workspace number $ws2
+# bindsym $mod+3 workspace number $ws3
+# bindsym $mod+4 workspace number $ws4
+# bindsym $mod+5 workspace number $ws5
+# bindsym $mod+6 workspace number $ws6
+# bindsym $mod+7 workspace number $ws7
+# bindsym $mod+8 workspace number $ws8
+# bindsym $mod+9 workspace number $ws9
+#
+# # Move containers to workspaces
+# bindsym $mod+Shift+1 move container to workspace number $ws1
+# bindsym $mod+Shift+2 move container to workspace number $ws2
+# bindsym $mod+Shift+3 move container to workspace number $ws3
+# bindsym $mod+Shift+4 move container to workspace number $ws4
+# bindsym $mod+Shift+5 move container to workspace number $ws5
+# bindsym $mod+Shift+6 move container to workspace number $ws6
+# bindsym $mod+Shift+7 move container to workspace number $ws7
+# bindsym $mod+Shift+8 move container to workspace number $ws8
+# bindsym $mod+Shift+9 move container to workspace number $ws9
+#
+# # --- Media Keys ---
+# bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 0 +5%
+# bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume 0 -5%
+# bindsym XF86AudioMute        exec /usr/bin/pactl set-sink-mute 0 toggle
+#
+# # --- Status Bar ---
+# bar {
+#     position top
+#     # When you are ready to use a status script, uncomment the line below:
+#     # status_command i3status
+#     # mode hide
+#     # hidden_state hide
+#     # modifier $mod
+# }
+# bindsym $mod+b bar mode toggle
+
+
+
+
+# ==========================================
+# Sway config - Ayu-Dark Rice
+# ==========================================
+
+# --- Variables ---
+set $mod Mod4
+
+# Set your terminal
+set $term alacritty
+
+# Set your menu (using Wofi)
+set $menu wofi --show drun
+
+# --- Appearance & Gaps ---
+default_border pixel 2
+gaps inner 8
+smart_gaps off
+
+# Ayu-Dark Window Colors
+# class                 border    background text      indicator child_border
+client.focused          #59c2ff   #59c2ff    #0f1419   #59c2ff   #59c2ff
+client.unfocused        #131721   #0f1419    #bfbdb6   #131721   #131721
+client.focused_inactive #131721   #0f1419    #bfbdb6   #131721   #131721
+
+# --- Autostart (Daemons & Rice) ---
+# Start the authentication agent (required for GUI apps needing sudo)
+# Note: Arch typically uses polkit-gnome or polkit-kde. Update this path if you installed a different one.
+exec /usr/lib/polkit-kde-authentication-agent-1 
+
+# Start the notification daemon
+exec mako
+
+# Set wallpaper (Make sure you save an image to this exact path)
+exec swaybg -i ~/.config/sway/wallpaper.jpg -m fill
+
+# Idle management (Screen locking and DPMS)
+exec swayidle -w \
+    timeout 300 'swaylock -f -c 0f1419' \
+    timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+    before-sleep 'swaylock -f -c 0f1419'
+
+# --- Workspace Names (Tags) ---
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+
+# --- Window Rules ---
+# Sway uses app_id for Wayland native apps and class for XWayland apps
+assign [class="Firefox"] $ws1
+assign [app_id="zen"] $ws1
+for_window [class="Gimp"] floating enable
+
+# --- Keybindings ---
+
+# Core
+bindsym $mod+Return       exec $term
+bindsym $mod+Shift+Return exec $menu
+bindsym $mod+q            kill
+bindsym $mod+Shift+r      reload
+bindsym $mod+Shift+q      exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway?' -B 'Yes, exit sway' 'swaymsg exit'
+
+# Focus (dwm: focusstack / Sway: directional focus)
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+h focus left
+bindsym $mod+l focus right
+
+# Move (dwm: movestack / Sway: directional move)
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+l move right
+
+# Resize (dwm: setmfact / Sway: resize mode or direct commands)
+bindsym $mod+Control+h resize shrink width 5 px or 5 ppt
+bindsym $mod+Control+l resize grow width 5 px or 5 ppt
+
+# Layouts (Approximations of dwm layouts)
+bindsym $mod+t layout toggle split   # default tile behavior
+bindsym $mod+m layout tabbed         # monocle approximation
+bindsym $mod+f fullscreen toggle     # Sway handles floating differently; mapped to fullscreen instead
+bindsym $mod+Shift+space floating toggle
+
+# Gaps
+bindsym $mod+minus       gaps inner current minus 2
+bindsym $mod+equal       gaps inner current plus 2
+bindsym $mod+Shift+equal gaps inner current set 8
+
+# Monitors (dwm: focusmon/tagmon)
+bindsym $mod+comma       focus output left
+bindsym $mod+period      focus output right
+bindsym $mod+Shift+comma move workspace to output left
+bindsym $mod+Shift+period move workspace to output right
+
+# Shiftview (dwm: shiftview script / Sway: native workspace cycle)
+bindsym $mod+Control+Left  workspace prev
+bindsym $mod+Control+Right workspace next
+
+# --- Workspaces (Tags) ---
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
+bindsym $mod+9 workspace number $ws9
+
+# Move containers to workspaces
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+
+# --- Media & Hardware Keys ---
+# Audio (PulseAudio/PipeWire)
+bindsym XF86AudioRaiseVolume exec /usr/bin/pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec /usr/bin/pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute        exec /usr/bin/pactl set-sink-mute 0 toggle
+
+# Brightness (brightnessctl)
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+
+# Screenshots (grim) - Full screen to clipboard
+bindsym Print exec grim - | wl-copy
+
+# --- Status Bar ---
+bar {
+    swaybar_command waybar
+}
+bindsym $mod+b bar mode toggle
+
+input "type:touchpad" {
+    tap enabled
+    natural_scroll enabled
+    dwt enabled
+}
