@@ -1,0 +1,21 @@
+[window]
+padding = { x = 8, y = 8 }
+opacity = 1
+
+[font]
+normal = { family = "Hack Nerd Font", style = "Regular" }
+size = 11.0
+
+[colors.primary]
+background = '#0f1419'
+foreground = '#bfbdb6'
+
+[colors.normal]
+black   = '#000000'
+red     = '#ff3333'
+green   = '#b8cc52'
+yellow  = '#e7c547'
+blue    = '#36a3d9'
+magenta = '#f07178'
+cyan    = '#95e6cb'
+white   = '#ffffff'

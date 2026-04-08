@@ -19,12 +19,12 @@ export EDITOR="nvim"
 export READER="zathura"
 export VISUAL="nvim"
 export TERMINAL="alacritty"
-export BROWSER="librewolf"
+export BROWSER="zen-browser"
 export VIDEO="mpv"
 export IMAGE="nsxiv"
 export OPENER="xdg-open"
 export PAGER="less"
-export WM="dwm"
+export WM="sway"
 
 # lf icons
 export LF_ICONS="\

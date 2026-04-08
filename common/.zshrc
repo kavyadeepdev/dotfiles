@@ -133,3 +133,6 @@ export NVM_DIR="$HOME/.config/nvm"
 # Pyenv
 eval "$(pyenv init - bash)"
 eval "$(pyenv virtualenv-init -)"
+
+# opencode
+export PATH=/home/kadenstack/.opencode/bin:$PATH
