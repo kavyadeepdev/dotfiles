@@ -31,9 +31,21 @@
     },
 	"idle_inhibitor": {
 		"format": "{icon}",
+		"start-activated": true,
 		"format-icons": {
 			"activated": "",
 			"deactivated": ""
 		}
-	}
+	},
+	"battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "tray": {
+        "spacing": 16
+    }
 }
