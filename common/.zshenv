@@ -4,6 +4,12 @@ export PATH="$PATH:$HOME/.node_modules"
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/var/lib/flatpak/exports/bin/"
 
+# Android Studio
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+export PATH=$PATH:$ANDROID_HOME/build-tools
 
 # Pyenv
 export PYENV_ROOT="$HOME/.pyenv"

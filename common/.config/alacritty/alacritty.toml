@@ -1,16 +1,16 @@
 [window]
 opacity = 1
 
-  [window.padding]
-  x = 8
-  y = 8
+[window.padding]
+x = 8
+y = 8
 
 [font]
 size = 11
 
-  [font.normal]
-  family = "Hack Nerd Font"
-  style = "Regular"
+[font.normal]
+family = "Hack Nerd Font"
+style = "Regular"
 
 [colors.primary]
 background = "#0A0E14"
