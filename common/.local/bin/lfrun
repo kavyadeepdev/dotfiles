@@ -1,0 +1,29 @@
+#!/bin/sh
+# lfrun — launch lf with image previews.
+#
+# Shipped in the dotfiles at common/.local/bin/lfrun. `stow common` symlinks
+# it to ~/.local/bin/lfrun, which is already on PATH via .zshenv — so
+# `alias lf="lfrun"` works on every machine with zero extra steps.
+#
+# On X11 it starts an `ueberzugpp layer` that reads JSON draw commands from
+# $FIFO_UEBERZUG (written by ~/.config/lf/preview and ~/.config/lf/cleaner).
+# Anywhere else (Wayland/TTY, or ueberzugpp not installed) it just runs plain
+# lf — the previewer falls back to chafa there, so nothing breaks.
+
+if command -v ueberzugpp >/dev/null 2>&1 \
+	&& [ -n "$DISPLAY" ] && [ -z "$WAYLAND_DISPLAY" ]; then
+	export FIFO_UEBERZUG="${TMPDIR:-/tmp}/lf-ueberzug-$$"
+	cleanup() {
+		exec 3>&- 2>/dev/null
+		rm -f "$FIFO_UEBERZUG"
+	}
+	rm -f "$FIFO_UEBERZUG"
+	mkfifo "$FIFO_UEBERZUG" || exec lf "$@"
+	ueberzugpp layer --silent <"$FIFO_UEBERZUG" &
+	exec 3>"$FIFO_UEBERZUG"
+	trap cleanup HUP INT QUIT TERM EXIT
+	lf "$@" 3>&-
+	cleanup
+else
+	exec lf "$@"
+fi

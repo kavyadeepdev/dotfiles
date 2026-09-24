@@ -121,7 +121,7 @@ Notes from your configs (`common/.zshrc`, `common/.zshenv` — Neovim-only setup
   |---|---|---|
   | `vim` | `nvim` | `neovim` |
   | `sxiv` | `nsxiv` | `nsxiv` |
-  | `lf` | `lfrun` | ⚠️ missing from repo — provide a wrapper or re-alias to `lf` |
+  | `lf` | `lfrun` | shipped in-repo at `common/.local/bin/lfrun`, stowed to `~/.local/bin` (on `PATH` via `.zshenv`) |
   | `cat` | `bat` | `bat` |
   | `ls` / `l` / `la` / `lla` / `lt` | `lsd`, `lsd -l`, `lsd -a`, `lsd -la`, `lsd --tree` | `lsd` |
   | `btw` | `fastfetch` | `fastfetch` |
@@ -208,7 +208,7 @@ tmux
 # tpm, vim-tmux-navigator, tmux-resurrect, tmux-continuum, tmux-power
 ```
 
-There is no `lfrun` wrapper in the repo — `alias lf="lfrun"` in `.zshrc` will fail unless you create it. Either install/provide `lfrun` (ueberzug launcher script) or change the alias to `lf`.
+`lfrun` ships in this repo (`common/.local/bin/lfrun`) and lands on `PATH` via `stow common` — no separate install. It starts `ueberzugpp layer` on X11 for image previews (needs the `ueberzugpp` package) and degrades to plain `lf` on Wayland/TTY, where the previewer uses `chafa` instead.
 
 ---
 
