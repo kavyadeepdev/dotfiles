@@ -7,6 +7,7 @@ opt.fileencoding = "utf-8"
 opt.backup = false
 opt.swapfile = false
 opt.writebackup = false
+opt.autoread = true
 
 -- Number Line
 opt.number = true
@@ -49,4 +50,13 @@ opt.mouse = "a"
 
 -- Additional Settings
 opt.shortmess:append "c"
+
+-- Auto-reload files changed on disk (e.g. by AI agents / external tools)
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+  callback = function()
+    if vim.fn.mode() ~= "c" then
+      vim.cmd("checktime")
+    end
+  end,
+})
 
