@@ -1,1 +1,3 @@
 *alacritty*.bak
+# fontconfig cache IDs — auto-generated per font dir by fc-cache, not config
+.uuid

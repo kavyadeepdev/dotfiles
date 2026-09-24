@@ -588,7 +588,7 @@ beautiful.useless_gap = 4
 
 -- Autostart
 awful.spawn.with_shell("picom")
-awful.spawn.with_shell("/home/kadenstack/.config/polybar/launch.sh")
+awful.spawn.with_shell("/home/" .. os.getenv("USER") .. "/.config/polybar/launch.sh")
 awful.spawn.with_shell("pcmanfm --desktop")
 awful.spawn.with_shell("pcmanfm --d")
 awful.spawn.with_shell("nitrogen --restore")

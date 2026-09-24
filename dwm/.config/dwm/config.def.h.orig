@@ -15,7 +15,7 @@ static const int horizpadbar        = 10;        /* horizontal padding for statu
 static const int vertpadbar         = 8;        /* vertical padding for statusbar */
 static const char *fonts[]          = { "Fira Code Nerd Font" };
 static const char dmenufont[]       = "Fira Code Nerd Font";
-#include "/home/kadenstack/.config/dwm/themes/ayu-dark.h"
+#include "themes/ayu-dark.h"
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },

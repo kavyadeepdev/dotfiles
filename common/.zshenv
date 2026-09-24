@@ -197,6 +197,6 @@ ex=:\
 "
 
 # Spicetify
-export PATH=$PATH:/home/kavyadeep/.spicetify
+export PATH=$PATH:/home/$USER/.spicetify
 
 . "$HOME/.cargo/env"
