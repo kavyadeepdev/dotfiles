@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=DWM
+Comment=Dynamic Window Manager
+Exec=dwm-start
+Icon=dwm
+Type=XSession
+DesktopNames=DWM

@@ -55,6 +55,9 @@ exec nm-applet
 # ROG Control Center
 exec rog-control-center
 
+# Enable Autotiling
+exec autotiling --limit 2
+
 # --- Workspace Names (Tags) ---
 set $ws1 "1"
 set $ws2 "2"

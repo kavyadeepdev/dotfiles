@@ -11,10 +11,6 @@
 # Authors:
 #	Mike A. Harris <mharris@redhat.com>
 
-# Mandatorily source xinitrc-common, which is common code shared between the
-# Xsession and xinitrc scripts which has been factored out to avoid duplication
-. /etc/X11/xinit/xinitrc-common
-
 # The user may have their own clients they want to run.  If they don't,
 # fall back to system defaults.
 if [ -f $HOME/.Xclients ]; then
