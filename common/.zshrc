@@ -160,3 +160,23 @@ compinit
 
 # Added by Antigravity CLI installer
 export PATH="/home/$USER/.local/bin:$PATH"
+
+# ssh-agent: reuse a persistent socket, stay quiet (no console I/O after p10k instant prompt).
+# Don't override a forwarded agent (e.g. SSH -A).
+if [ -z "$SSH_AUTH_SOCK" ]; then
+  export SSH_AUTH_SOCK="$HOME/.ssh/ssh_auth_sock"
+fi
+ssh-add -l >/dev/null 2>&1
+_ssh_add_status=$?
+if [ $_ssh_add_status -eq 2 ]; then
+  # No agent reachable — (re)start one on the persistent socket, quietly.
+  [ -S "$SSH_AUTH_SOCK" ] && rm -f "$SSH_AUTH_SOCK"
+  eval "$(ssh-agent -s -a "$SSH_AUTH_SOCK")" >/dev/null 2>&1
+fi
+unset _ssh_add_status
+if [ -f ~/.ssh/id_ed25519 ] && [ -f ~/.ssh/id_ed25519.pub ]; then
+  if ! ssh-add -l 2>/dev/null | grep -q "$(ssh-keygen -lf ~/.ssh/id_ed25519.pub 2>/dev/null | awk '{print $2}')"; then
+    # Fails quietly if the key needs a passphrase and there's no tty/askpass.
+    ssh-add -q ~/.ssh/id_ed25519 >/dev/null 2>&1
+  fi
+fi
